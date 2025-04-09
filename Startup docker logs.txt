@@ -1,0 +1,200 @@
+rasam@Vinothkumar_RN MINGW64 /c/My_Drive/Python_Workspace/flight-tracker-api
+$ docker-compose down -v
+time="2025-04-09T16:26:52+05:30" level=warning msg="C:\\My_Drive\\Python_Workspace\\flight-tracker-api\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+[+] Running 6/6
+ ✔ Container flight-tracker-api-celery-1  Removed                                                                                                                                            0.1s
+ ✔ Container flight-tracker-api-api-1     Removed                                                                                                                                            0.1s
+ ✔ Container flight-tracker-api-redis-1   Removed                                                                                                                                            0.0s
+ ✔ Container flight-tracker-api-db-1      Removed                                                                                                                                            0.0s
+ ✔ Volume flight-tracker-api_pgdata       Removed                                                                                                                                            0.1s
+ ✔ Network flight-tracker-api_default     Removed                                                                                                                                            0.7s
+
+rasam@Vinothkumar_RN MINGW64 /c/My_Drive/Python_Workspace/flight-tracker-api
+$ docker-compose up --build
+time="2025-04-09T16:26:55+05:30" level=warning msg="C:\\My_Drive\\Python_Workspace\\flight-tracker-api\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+Compose can now delegate builds to bake for better performance.
+ To do so, set COMPOSE_BAKE=true.
+[+] Building 3.8s (19/19) FINISHED                                                                                                                                           docker:desktop-linux
+ => [api internal] load build definition from Dockerfile                                                                                                                                     0.0s
+ => => transferring dockerfile: 234B                                                                                                                                                         0.0s
+ => [celery internal] load metadata for docker.io/library/python:3.10-slim                                                                                                                   3.1s
+ => [api internal] load .dockerignore                                                                                                                                                        0.0s
+ => => transferring context: 2B                                                                                                                                                              0.0s
+ => [celery 1/5] FROM docker.io/library/python:3.10-slim@sha256:65578aaf2611768008d25ad2011bfbe1f186267275fca87af8cd31f50f5372a9                                                             0.1s
+ => => resolve docker.io/library/python:3.10-slim@sha256:65578aaf2611768008d25ad2011bfbe1f186267275fca87af8cd31f50f5372a9                                                                    0.0s
+ => [api internal] load build context                                                                                                                                                        0.0s
+ => => transferring context: 9.20kB                                                                                                                                                          0.0s
+ => CACHED [celery 2/5] WORKDIR /app                                                                                                                                                         0.0s
+ => CACHED [api 3/5] COPY requirements.txt .                                                                                                                                                 0.0s
+ => CACHED [api 4/5] RUN pip install --no-cache-dir -r requirements.txt                                                                                                                      0.0s
+ => [api 5/5] COPY . .                                                                                                                                                                       0.1s
+ => [api] exporting to image                                                                                                                                                                 0.1s
+ => => exporting layers                                                                                                                                                                      0.1s
+ => => writing image sha256:6b9136886ebf97ca5a98b6d54825c00e796fdbc189cd63460a601a2343d0aa9b                                                                                                 0.0s
+ => => naming to docker.io/library/flight-tracker-api-api                                                                                                                                    0.0s
+ => [api] resolving provenance for metadata file                                                                                                                                             0.0s
+ => [celery internal] load build definition from Dockerfile                                                                                                                                  0.0s
+ => => transferring dockerfile: 234B                                                                                                                                                         0.0s
+ => [celery internal] load .dockerignore                                                                                                                                                     0.0s
+ => => transferring context: 2B                                                                                                                                                              0.0s
+ => [celery internal] load build context                                                                                                                                                     0.0s
+ => => transferring context: 2.22kB                                                                                                                                                          0.0s
+ => CACHED [celery 3/5] COPY requirements.txt .                                                                                                                                              0.0s
+ => CACHED [celery 4/5] RUN pip install --no-cache-dir -r requirements.txt                                                                                                                   0.0s
+ => CACHED [celery 5/5] COPY . .                                                                                                                                                             0.0s
+ => [celery] exporting to image                                                                                                                                                              0.0s
+ => => exporting layers                                                                                                                                                                      0.0s
+ => => writing image sha256:676ec5ffeef7d4e8b8e6d5f107d9a454d0b766909bdc92e8e5d775e0ef364370                                                                                                 0.0s
+ => => naming to docker.io/library/flight-tracker-api-celery                                                                                                                                 0.0s
+ => [celery] resolving provenance for metadata file                                                                                                                                          0.0s
+[+] Running 8/8
+ ✔ api                                    Built                                                                                                                                              0.0s
+ ✔ celery                                 Built                                                                                                                                              0.0s
+ ✔ Network flight-tracker-api_default     Created                                                                                                                                            0.1s
+ ✔ Volume "flight-tracker-api_pgdata"     Created                                                                                                                                            0.0s
+ ✔ Container flight-tracker-api-redis-1   Created                                                                                                                                            0.2s
+ ✔ Container flight-tracker-api-db-1      Created                                                                                                                                            0.2s
+ ✔ Container flight-tracker-api-api-1     Created                                                                                                                                            0.1s
+ ✔ Container flight-tracker-api-celery-1  Created                                                                                                                                            0.1s
+Attaching to api-1, celery-1, db-1, redis-1
+db-1      | The files belonging to this database system will be owned by user "postgres".
+db-1      | This user must also own the server process.
+redis-1   | 1:C 09 Apr 2025 10:57:01.153 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+db-1      |
+redis-1   | 1:C 09 Apr 2025 10:57:01.153 * Redis version=7.4.2, bits=64, commit=00000000, modified=0, pid=1, just started
+db-1      | The database cluster will be initialized with locale "en_US.utf8".
+redis-1   | 1:C 09 Apr 2025 10:57:01.153 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+db-1      | The default database encoding has accordingly been set to "UTF8".
+redis-1   | 1:M 09 Apr 2025 10:57:01.154 * monotonic clock: POSIX clock_gettime
+db-1      | The default text search configuration will be set to "english".
+redis-1   | 1:M 09 Apr 2025 10:57:01.155 * Running mode=standalone, port=6379.
+db-1      |
+redis-1   | 1:M 09 Apr 2025 10:57:01.155 * Server initialized
+db-1      | Data page checksums are disabled.
+redis-1   | 1:M 09 Apr 2025 10:57:01.155 * Ready to accept connections tcp
+db-1      |
+db-1      | fixing permissions on existing directory /var/lib/postgresql/data ... ok
+db-1      | creating subdirectories ... ok
+db-1      | selecting dynamic shared memory implementation ... posix
+db-1      | selecting default "max_connections" ... 100
+db-1      | selecting default "shared_buffers" ... 128MB
+db-1      | selecting default time zone ... Etc/UTC
+db-1      | creating configuration files ... ok
+db-1      | running bootstrap script ... ok
+db-1      | performing post-bootstrap initialization ... ok
+db-1      | initdb: warning: enabling "trust" authentication for local connections
+db-1      | initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+db-1      | syncing data to disk ... ok
+db-1      |
+db-1      |
+db-1      | Success. You can now start the database server using:
+db-1      |
+db-1      |     pg_ctl -D /var/lib/postgresql/data -l logfile start
+db-1      |
+db-1      | waiting for server to start....2025-04-09 10:57:02.560 UTC [48] LOG:  starting PostgreSQL 17.4 (Debian 17.4-1.pgdg120+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+db-1      | 2025-04-09 10:57:02.564 UTC [48] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+db-1      | 2025-04-09 10:57:02.574 UTC [51] LOG:  database system was shut down at 2025-04-09 10:57:02 UTC
+db-1      | 2025-04-09 10:57:02.582 UTC [48] LOG:  database system is ready to accept connections
+db-1      |  done
+db-1      | server started
+db-1      | CREATE DATABASE
+db-1      |
+db-1      |
+db-1      | /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+db-1      |
+db-1      | waiting for server to shut down...2025-04-09 10:57:02.806 UTC [48] LOG:  received fast shutdown request
+db-1      | .2025-04-09 10:57:02.809 UTC [48] LOG:  aborting any active transactions
+db-1      | 2025-04-09 10:57:02.811 UTC [48] LOG:  background worker "logical replication launcher" (PID 54) exited with exit code 1
+db-1      | 2025-04-09 10:57:02.812 UTC [49] LOG:  shutting down
+db-1      | 2025-04-09 10:57:02.815 UTC [49] LOG:  checkpoint starting: shutdown immediate
+db-1      | 2025-04-09 10:57:02.938 UTC [49] LOG:  checkpoint complete: wrote 921 buffers (5.6%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.032 s, sync=0.083 s, total=0.126 s; sync files=301, longest=0.003 s, average=0.001 s; distance=4238 kB, estimate=4238 kB; lsn=0/1908980, redo lsn=0/1908980
+db-1      | 2025-04-09 10:57:02.952 UTC [48] LOG:  database system is shut down
+db-1      |  done
+db-1      | server stopped
+db-1      |
+db-1      | PostgreSQL init process complete; ready for start up.
+db-1      |
+db-1      | 2025-04-09 10:57:03.049 UTC [1] LOG:  starting PostgreSQL 17.4 (Debian 17.4-1.pgdg120+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+db-1      | 2025-04-09 10:57:03.050 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+db-1      | 2025-04-09 10:57:03.050 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+db-1      | 2025-04-09 10:57:03.058 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+db-1      | 2025-04-09 10:57:03.068 UTC [64] LOG:  database system was shut down at 2025-04-09 10:57:02 UTC
+db-1      | 2025-04-09 10:57:03.078 UTC [1] LOG:  database system is ready to accept connections
+api-1     | INFO:     Will watch for changes in these directories: ['/app']
+api-1     | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+api-1     | INFO:     Started reloader process [1] using StatReload
+celery-1  | 2025-04-09 10:57:14 [celery.utils.functional] DEBUG:
+celery-1  | def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+celery-1  |     return 1
+celery-1  |
+celery-1  | 2025-04-09 10:57:14 [celery.utils.functional] DEBUG:
+celery-1  | def xmap(task, it):
+celery-1  |     return 1
+celery-1  |
+celery-1  | 2025-04-09 10:57:14 [celery.utils.functional] DEBUG:
+celery-1  | def chain(*args, **kwargs):
+celery-1  |     return 1
+celery-1  |
+celery-1  | 2025-04-09 10:57:14 [celery.utils.functional] DEBUG:
+api-1     | INFO:     Started server process [8]
+celery-1  | def xstarmap(task, it):
+api-1     | INFO:     Waiting for application startup.
+celery-1  |     return 1
+api-1     | INFO:     Application startup complete.
+celery-1  |
+celery-1  | 2025-04-09 10:57:14 [celery.utils.functional] DEBUG:
+celery-1  | def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+celery-1  |     return 1
+celery-1  |
+celery-1  | 2025-04-09 10:57:14 [celery.utils.functional] DEBUG:
+celery-1  | def accumulate(self, *args, **kwargs):
+celery-1  |     return 1
+celery-1  |
+celery-1  | 2025-04-09 10:57:14 [celery.utils.functional] DEBUG:
+celery-1  | def run_scraper(flight_number, departure_date):
+celery-1  |     return 1
+celery-1  |
+celery-1  | 2025-04-09 10:57:14 [celery.utils.functional] DEBUG:
+celery-1  | def chunks(task, it, n):
+celery-1  |     return 1
+celery-1  |
+celery-1  | 2025-04-09 10:57:14 [celery.utils.functional] DEBUG:
+celery-1  | def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+celery-1  |     return 1
+celery-1  |
+celery-1  | 2025-04-09 10:57:14 [celery.utils.functional] DEBUG:
+celery-1  | def backend_cleanup():
+celery-1  |     return 1
+celery-1  |
+celery-1  | 2025-04-09 10:57:14 [py.warnings] WARNING: /usr/local/lib/python3.10/site-packages/celery/platforms.py:841: SecurityWarning: You're running the worker with superuser privileges: this is
+celery-1  | absolutely not recommended!
+celery-1  |
+celery-1  | Please specify a different user using the --uid option.
+celery-1  |
+celery-1  | User information: uid=0 euid=0 gid=0 egid=0
+celery-1  |
+celery-1  |   warnings.warn(SecurityWarning(ROOT_DISCOURAGED.format(
+celery-1  |
+celery-1  |
+celery-1  |  -------------- celery@c27b3c8d6858 v5.5.1 (immunity)
+celery-1  | --- ***** -----
+celery-1  | -- ******* ---- Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.36 2025-04-09 10:57:14
+celery-1  | - *** --- * ---
+celery-1  | - ** ---------- [config]
+celery-1  | - ** ---------- .> app:         flight_tracker:0x7f30c6d28fa0
+celery-1  | - ** ---------- .> transport:   redis://redis:6379/0
+celery-1  | - ** ---------- .> results:     redis://redis:6379/0
+celery-1  | - *** --- * --- .> concurrency: 16 (prefork)
+celery-1  | -- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+celery-1  | --- ***** -----
+celery-1  |  -------------- [queues]
+celery-1  |                 .> scraper          exchange=scraper(direct) key=scraper
+celery-1  |
+celery-1  |
+celery-1  | [tasks]
+celery-1  |   . app.tasks.run_scraper
+celery-1  |
+celery-1  | [2025-04-09 10:57:16,226: INFO/MainProcess] Connected to redis://redis:6379/0
+celery-1  | [2025-04-09 10:57:16,232: INFO/MainProcess] mingle: searching for neighbors
+celery-1  | [2025-04-09 10:57:17,248: INFO/MainProcess] mingle: all alone
+celery-1  | [2025-04-09 10:57:17,289: INFO/MainProcess] celery@c27b3c8d6858 ready.
